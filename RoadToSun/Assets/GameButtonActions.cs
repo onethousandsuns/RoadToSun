@@ -10,7 +10,6 @@ public class GameButtonActions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        print(this.ToString());
 	    Button optBtn = this.GetComponent<Button>();
 	    optBtn.onClick.AddListener(RotateButton);
     }

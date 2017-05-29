@@ -10,12 +10,18 @@ public class GameHandler : MonoBehaviour {
     public Button optionButton;
     public GameObject gameField;
     public GameObject GameButtonPrefab; 
+	public GameObject GameTriangleExample; 
 
-
+	private Vector2[] coords = new [] {
+		new Vector2(-1.326451f, 0.001922755f),
+		new Vector2(-0.4302004f, 0.001922755f), 
+		new Vector2(0.4660505f, 0.001922755f), 
+		new Vector2(1.362301f, 0.001922755f) };
     private bool gameFieldVisible = false;
 
     // Use this for initialization
     void Start () {
+		//SpawnExample ();
         Button optBtn = optionButton.GetComponent<Button>();
         optBtn.onClick.AddListener(GoToMainMenu);
 
@@ -47,14 +53,30 @@ public class GameHandler : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
     }
 
+	void SpawnExample()
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			if (x % 2 == 0) {
+				print (coords [x]);
+				Instantiate (GameTriangleExample, coords[x], Quaternion.identity);		
+			} else {
+				Instantiate (GameTriangleExample, coords[x], Quaternion.Euler(0, 0, 180));	
+			}
+
+		}
+	}
+
     void SpawnButtons()
     {
-        for (int y = 0; y < 5; y++)
+        for (int x = 0; x < 4; x++)
         {
-            for (int x = 0; x < 5; x++)
-            {
-                Instantiate(GameButtonPrefab, new Vector3(x, y, 0), Quaternion.identity);
-            }
+			if (x % 2 == 0) {
+				Instantiate (GameButtonPrefab, coords[x], Quaternion.identity);		
+			} else {
+				Instantiate (GameButtonPrefab, coords[x], Quaternion.Euler(0, 0, 180));	
+			}
+
         }
     }
 }
