@@ -5,28 +5,33 @@ namespace Assets.SCRIPTS.Game
 {
     public class Shape : MonoBehaviour {
 
-        private ShapeDirection direction;
+        private ShapeDirection _direction;
 
         public Shape()
         {
-            direction = ShapeDirection.None;
+            _direction = ShapeDirection.None;
+        }
+
+        public Shape(ShapeDirection direction)
+        {
+            _direction = direction;
         }
 
         public ShapeDirection Direction
         {
             get
             {
-                return direction;
+                return _direction;
             }
             set
             {
-                direction = value;
+                _direction = value;
             }
         }
 
         public void ChangeDirection()
         {
-            direction = direction == ShapeDirection.Up ? ShapeDirection.Down : ShapeDirection.Up; 
+            _direction = _direction == ShapeDirection.Up ? ShapeDirection.Down : ShapeDirection.Up; 
         }
     }
 

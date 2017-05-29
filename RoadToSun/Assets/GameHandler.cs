@@ -9,6 +9,8 @@ public class GameHandler : MonoBehaviour {
 
     public Button optionButton;
     public GameObject gameField;
+    public GameObject GameButtonPrefab; 
+
 
     private bool gameFieldVisible = false;
 
@@ -43,5 +45,16 @@ public class GameHandler : MonoBehaviour {
         IEnumerable<WaitForSeconds> runEnumerable = HideGameField();
         Debug.Log("You have clicked IN_GAME_OPTION button!");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void SpawnButtons()
+    {
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                Instantiate(GameButtonPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            }
+        }
     }
 }
