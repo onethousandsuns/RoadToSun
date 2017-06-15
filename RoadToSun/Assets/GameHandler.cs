@@ -21,7 +21,7 @@ public class GameHandler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		//SpawnExample ();
+		SpawnExample ();
         Button optBtn = optionButton.GetComponent<Button>();
         optBtn.onClick.AddListener(GoToMainMenu);
 
@@ -59,9 +59,9 @@ public class GameHandler : MonoBehaviour {
 		{
 			if (x % 2 == 0) {
 				print (coords [x]);
-				Instantiate (GameTriangleExample, coords[x], Quaternion.identity);		
+				Instantiate (GameButtonPrefab, coords[x], Quaternion.identity);		
 			} else {
-				Instantiate (GameTriangleExample, coords[x], Quaternion.Euler(0, 0, 180));	
+				Instantiate (GameButtonPrefab, coords[x], Quaternion.Euler(0, 0, 180));	
 			}
 
 		}
