@@ -5,7 +5,7 @@ namespace Assets.SCRIPTS.Game
 {
     public class Shape : MonoBehaviour {
 
-        private ShapeDirection _direction;
+        public ShapeDirection _direction;
 
         public Shape()
         {

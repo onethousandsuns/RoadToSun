@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class GameButtonActions : MonoBehaviour {
 
-    private Shape shape = new Shape(ShapeDirection.Down); 
+    public Shape shape;
+	public GameButtonActions otherButton;
 
 	// Use this for initialization
 	void Start () {
 	    Button optBtn = this.GetComponent<Button>();
-	    optBtn.onClick.AddListener(RotateButton);
+		UnityEngine.Events.UnityAction action1 = () => { this.RotateButton(true); };
+	    optBtn.onClick.AddListener(action1);
+		RotateButton(false);
     }
 	
 	// Update is called once per frame
@@ -19,7 +22,7 @@ public class GameButtonActions : MonoBehaviour {
 		
 	}
 
-    void RotateButton()
+    void RotateButton(bool isClick)
     {
         if (shape.Direction == ShapeDirection.Up)
         {
@@ -30,5 +33,9 @@ public class GameButtonActions : MonoBehaviour {
             this.GetComponent<Animation>().Play("button_rotation_up_to_down");
         }
         shape.ChangeDirection();
+		if(isClick)
+		{
+			otherButton.RotateButton(false);
+		}
     }
 }
