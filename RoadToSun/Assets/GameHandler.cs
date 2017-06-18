@@ -10,9 +10,11 @@ public class GameHandler : MonoBehaviour {
     public Button optionButton;
     public GameObject gameField;
     public GameObject GameButtonPrefab; 
-	public GameObject GameTriangleExample; 
+	public GameObject GameTriangleExample;
+    public static GameHandler gameHandler;
+    private int currentLvl = 1;
 
-	private Vector2[] coords = new [] {
+    private Vector2[] coords = new [] {
 		new Vector2(-1.326451f, 0.001922755f),
 		new Vector2(-0.4302004f, 0.001922755f), 
 		new Vector2(0.4660505f, 0.001922755f), 
@@ -21,7 +23,9 @@ public class GameHandler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		SpawnExample ();
+        gameHandler = this;
+
+        SpawnExample ();
         Button optBtn = optionButton.GetComponent<Button>();
         optBtn.onClick.AddListener(GoToMainMenu);
 
@@ -78,5 +82,11 @@ public class GameHandler : MonoBehaviour {
 			}
 
         }
+    }
+
+    public void LoadNextLvl()
+    {
+        currentLvl += 1;
+        SceneManager.LoadScene("Level" + currentLvl.ToString());
     }
 }
