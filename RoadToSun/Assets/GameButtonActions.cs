@@ -37,5 +37,10 @@ public class GameButtonActions : MonoBehaviour {
 		{
 			otherButton.RotateButton(false);
 		}
+
+        if(GameLevel.gameLevel.IsSequencesEqual())
+        {
+            throw new System.Exception();
+        }
     }
 }

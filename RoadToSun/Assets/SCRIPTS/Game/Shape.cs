@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace Assets.SCRIPTS.Game
 {
+    public enum ShapeDirection
+    {
+        None,
+        Up,
+        Down
+    }
+
     public class Shape : MonoBehaviour {
 
         public ShapeDirection _direction;

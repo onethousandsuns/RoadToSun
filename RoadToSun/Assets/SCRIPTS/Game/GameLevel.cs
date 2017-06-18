@@ -6,43 +6,37 @@ namespace Assets.SCRIPTS.Game
 {
     public class GameLevel : MonoBehaviour{
 
-        private List<Shape> _expectedSequence;
-        private List<Shape> _currentSequence;
+		public static GameLevel gameLevel;
+        public GameObject[] expectedSequence;
+        public GameObject[] currentSequence;
 
-        private List<Shape> ExpectedSequence
-        {
-            get { return _expectedSequence; }
-            set { _expectedSequence = value; }
-        }
-
-        private List<Shape> CurrentSequence
-        {
-            get { return _currentSequence; }
-            set { _currentSequence = value; }
-        }
-
-        public GameLevel(List<Shape> expected, List<Shape> start)
-        {
-            _expectedSequence = expected;
-            _currentSequence = start;
-        }
 
         public bool IsSequencesEqual()
         {
-            return _expectedSequence.SequenceEqual(_currentSequence, new ShapeComparator());
-        }
+            if (expectedSequence.Length == 0)
+			{
+				expectedSequence = GameObject.FindGameObjectsWithTag("Ideal");
+			}
+			
+			if(currentSequence.Length == 0)
+			{
+				currentSequence = GameObject.FindGameObjectsWithTag("Current");
+			}
 
-        public void Rotate(int pos)
-        {
-            _currentSequence[pos].ChangeDirection();
-            if (pos < _currentSequence.Count - 1)
+            for(int i = 0; i < expectedSequence.Length; ++i)
             {
-                _currentSequence[pos + 1].ChangeDirection();
+                if(expectedSequence[i].GetComponent<Shape>().Direction != currentSequence[i].GetComponent<Shape>().Direction)
+                {
+                    return false;
+                }
             }
-            else
-            {
-                _currentSequence[pos - 1].ChangeDirection();
-            }
+			
+            return true;
         }
+		
+		void Start()
+		{
+			gameLevel = this;
+		}
     }
 }

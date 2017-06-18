@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Astroid
   - Shield
+  - Ideal
+  - Current
   layers:
   - Default
   - TransparentFX
