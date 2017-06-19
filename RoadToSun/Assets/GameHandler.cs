@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour {
     void Start () {
         gameHandler = this;
 
-        SpawnExample ();
+        //SpawnExample ();
         Button optBtn = optionButton.GetComponent<Button>();
         optBtn.onClick.AddListener(GoToMainMenu);
 

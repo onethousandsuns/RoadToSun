@@ -36,7 +36,7 @@ public class GameButtonActions : MonoBehaviour {
         {
             this.GetComponent<Animation>().Play("button_rotation_up_to_down");
         }
-        yield WaitForSeconds(animation["die"].length);
+        //yield WaitForSeconds(animation["die"].length);
     }
 
     void RotateButton(bool isClick)
