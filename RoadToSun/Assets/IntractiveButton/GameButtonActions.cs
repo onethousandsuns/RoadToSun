@@ -13,8 +13,12 @@ public class GameButtonActions : MonoBehaviour {
 	void Start () {
 	    Button optBtn = this.GetComponent<Button>();
 		UnityEngine.Events.UnityAction action1 = () => { this.RotateButton(true); };
-	    optBtn.onClick.AddListener(action1);
-		RotateButton(false);
+        optBtn.onClick.AddListener(action1);
+
+        if (shape.Direction != ShapeDirection.Down)
+        {
+            this.GetComponent<Animation>().Play("button_rotation_up_to_down");
+        }
     }
 	
 	// Update is called once per frame
@@ -22,7 +26,7 @@ public class GameButtonActions : MonoBehaviour {
 		
 	}
 
-    void RotateButton(bool isClick)
+    void PlayAnimation()
     {
         if (shape.Direction == ShapeDirection.Up)
         {
@@ -32,15 +36,21 @@ public class GameButtonActions : MonoBehaviour {
         {
             this.GetComponent<Animation>().Play("button_rotation_up_to_down");
         }
+        yield WaitForSeconds(animation["die"].length);
+    }
+
+    void RotateButton(bool isClick)
+    {
+        PlayAnimation();
         shape.ChangeDirection();
 		if(isClick)
 		{
 			otherButton.RotateButton(false);
-		}
 
-        if(GameLevel.gameLevel.IsSequencesEqual())
-        {
-            throw new System.Exception();
+            if (GameLevel.gameLevel.IsSequencesEqual())
+            {
+                GameHandler.gameHandler.LoadNextLvl();
+            }
         }
     }
 }
