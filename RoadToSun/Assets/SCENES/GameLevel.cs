@@ -10,22 +10,36 @@ namespace Assets.SCRIPTS.Game
         public GameObject[] expectedSequence;
         public GameObject[] currentSequence;
 
+        GameObject[] FindObsWithTag(string tag)
+        {
+            GameObject[] foundObs = GameObject.FindGameObjectsWithTag(tag);
+            System.Array.Sort(foundObs, CompareObNames);
+            return foundObs;
+        }
+
+
+        int CompareObNames(GameObject x, GameObject y)
+        {
+            return x.name.CompareTo(y.name);
+        }
 
         public bool IsSequencesEqual()
         {
             if (expectedSequence.Length == 0)
 			{
-				expectedSequence = GameObject.FindGameObjectsWithTag("Ideal");
+				expectedSequence = FindObsWithTag("Ideal");
 			}
 			
 			if(currentSequence.Length == 0)
 			{
-				currentSequence = GameObject.FindGameObjectsWithTag("Current");
+				currentSequence = FindObsWithTag("Current");
 			}
 
             for(int i = 0; i < expectedSequence.Length; ++i)
             {
-                if(expectedSequence[i].GetComponent<Shape>().Direction != currentSequence[i].GetComponent<Shape>().Direction)
+                ShapeDirection first = expectedSequence[i].GetComponent<Shape>().Direction;
+                ShapeDirection second = currentSequence[i].GetComponentInChildren<Shape>(false).Direction;
+                if (first != second)
                 {
                     return false;
                 }

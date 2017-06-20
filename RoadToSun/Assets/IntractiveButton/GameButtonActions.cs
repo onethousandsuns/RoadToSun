@@ -15,7 +15,7 @@ public class GameButtonActions : MonoBehaviour {
 		UnityEngine.Events.UnityAction action1 = () => { this.RotateButton(true); };
         optBtn.onClick.AddListener(action1);
 
-        if (shape.Direction != ShapeDirection.Down)
+        if (shape.Direction != ShapeDirection.Up)
         {
             this.GetComponent<Animation>().Play("button_rotation_up_to_down");
         }
@@ -30,11 +30,11 @@ public class GameButtonActions : MonoBehaviour {
     {
         if (shape.Direction == ShapeDirection.Up)
         {
-            this.GetComponent<Animation>().Play("button_rotation_down_to_up");
+            this.GetComponent<Animation>().Play("button_rotation_up_to_down");
         }
         else if (shape.Direction == ShapeDirection.Down)
         {
-            this.GetComponent<Animation>().Play("button_rotation_up_to_down");
+            this.GetComponent<Animation>().Play("button_rotation_down_to_up");
         }
         //yield WaitForSeconds(animation["die"].length);
     }
