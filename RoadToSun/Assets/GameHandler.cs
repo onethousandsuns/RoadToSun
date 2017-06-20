@@ -12,7 +12,7 @@ public class GameHandler : MonoBehaviour {
     public GameObject GameButtonPrefab; 
 	public GameObject GameTriangleExample;
     public static GameHandler gameHandler;
-    private int currentLvl = 1;
+    public int currentLvl;
 
     private Vector2[] coords = new [] {
 		new Vector2(-1.326451f, 0.001922755f),
