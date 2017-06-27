@@ -40,7 +40,7 @@ public class GameHandler : MonoBehaviour {
     void ShowGameField()
     {
         gameFieldVisible = true;
-        gameField.GetComponent<Animation>().Play("game_field_appearance");
+        //gameField.GetComponent<Animation>().Play("game_field_appearance");
     }
 
     IEnumerable<WaitForSeconds> HideGameField()
