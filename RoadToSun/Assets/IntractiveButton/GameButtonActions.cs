@@ -14,6 +14,7 @@ public class GameButtonActions : MonoBehaviour {
 
     private GameObject leftHUD;
     private GameObject rightHUD;
+    private GameObject infoHUD;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +22,7 @@ public class GameButtonActions : MonoBehaviour {
         gameField = GameObject.Find("GAME_OBJECT");
         leftHUD = GameObject.Find("LEFT_HUD_PANEL");
         rightHUD = GameObject.Find("RIGHT_HUD_PANEL");
+        infoHUD = GameObject.Find("INFO_PANEL");
 
         Button optBtn = this.GetComponent<Button>();
 		UnityEngine.Events.UnityAction action1 = () => { this.RotateButton(true); };
@@ -69,11 +71,11 @@ public class GameButtonActions : MonoBehaviour {
                 // HUD UEBIVAET
                 leftHUD.GetComponent<Animator>().Play("left_hud_panel_disappears");
                 rightHUD.GetComponent<Animator>().Play("right_hud_panel_disappears");
-
+                infoHUD.GetComponent<Animator>().Play("info_panel_disappears");
 
                 spaceShip.GetComponent<Animator>().Play("ship_disapearance");
 
-                StartCoroutine(Wait(10f));
+                StartCoroutine(Wait(8f));
             }
         }
     }
