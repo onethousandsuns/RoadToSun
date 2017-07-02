@@ -7,7 +7,7 @@ public class GameButtonActions : MonoBehaviour {
 
     public Shape shape;
 	public GameButtonActions otherButton;
-    public GameObject spaceShip;
+    private GameObject spaceShip;
 
     private GameObject exampleField;
     private GameObject gameField;
@@ -23,6 +23,7 @@ public class GameButtonActions : MonoBehaviour {
         leftHUD = GameObject.Find("LEFT_HUD_PANEL");
         rightHUD = GameObject.Find("RIGHT_HUD_PANEL");
         infoHUD = GameObject.Find("INFO_PANEL");
+        spaceShip = GameObject.Find("EnemyCarrierBase");
 
         Button optBtn = this.GetComponent<Button>();
 		UnityEngine.Events.UnityAction action1 = () => { this.RotateButton(true); };
