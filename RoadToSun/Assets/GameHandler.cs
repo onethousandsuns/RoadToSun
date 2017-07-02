@@ -86,7 +86,14 @@ public class GameHandler : MonoBehaviour {
 
     public void LoadNextLvl()
     {
-        currentLvl += 1;
-        SceneManager.LoadScene("Level" + currentLvl.ToString());
+        if (currentLvl > 0)
+        {
+            currentLvl += 1;
+            SceneManager.LoadScene("Level" + currentLvl.ToString());
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
