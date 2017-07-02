@@ -5784,7 +5784,7 @@ MonoBehaviour:
     type: 2}
   GameTriangleExample: {fileID: 1751663659251074, guid: 13ec78dca398c5a48a2938676ad2e249,
     type: 2}
-  currentLvl: 0
+  currentLvl: 4
 --- !u!114 &1967459953
 MonoBehaviour:
   m_ObjectHideFlags: 0
