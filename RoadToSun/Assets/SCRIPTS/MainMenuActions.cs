@@ -25,7 +25,7 @@ public class MainMenuActions : MonoBehaviour {
     public void StartGame()
     {
         Debug.Log("You have clicked the START button!");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1.1");
     }
 
     public void ExitGame()

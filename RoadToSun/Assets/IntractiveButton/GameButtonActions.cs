@@ -75,7 +75,6 @@ public class GameButtonActions : MonoBehaviour {
                 infoHUD.GetComponent<Animator>().Play("info_panel_disappears");
 
                 spaceShip.GetComponent<Animator>().Play("ship_disapearance");
-
                 StartCoroutine(Wait(8f));
             }
         }
